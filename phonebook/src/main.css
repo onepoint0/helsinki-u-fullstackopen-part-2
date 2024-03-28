@@ -1,0 +1,25 @@
+body {
+    font-family: sans-serif;
+}
+ul {
+    padding: 0;
+}
+li {
+    list-style-type: none;
+}
+.message {
+    background-color: lightgray;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.error {
+    border: 2px red solid;
+    color: red;
+}
+
+.success {
+    border: 2px green solid;
+    color: green;
+}
