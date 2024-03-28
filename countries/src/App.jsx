@@ -14,12 +14,8 @@ function App() {
     })
   },[])
 
-  const handleShow = (id) => {
-    console.log('show country ',id)
-    
-  }
-
   const countriesToShow = countries.filter( c => c.name.common.toLowerCase().search(country.toLowerCase()) > -1)
+
   return (
     <div>
 
@@ -28,7 +24,7 @@ function App() {
         <>
           <ul>
             { countriesToShow.length <= 10 && countriesToShow.length > 1 ?
-                countriesToShow.map( c => <li key={c.cca2}>{c.name.common} <button onClick={() => handleShow(c.cca2)}>show</button></li>) :
+                countriesToShow.map( c => <li key={c.cca2}>{c.name.common} <button onClick={() => setCountry(c.name.common)}>show</button></li>) :
                 'too many matches, specify another filter' } 
           </ul> 
         </>
@@ -41,3 +37,4 @@ function App() {
 }
 
 export default App
+
