@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     axios.get('https://studies.cs.helsinki.fi/restcountries/api/all')
     .then((res) => {
-      console.log('axios ',res.data)
+      // console.log('axios ',res.data)
       setCountries(res.data)
     })
   },[])
