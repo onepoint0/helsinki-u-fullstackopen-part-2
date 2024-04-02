@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
-import Form from '../components/Form'
-import Filter from '../components/Filter'
-import List from '../components/List'
-import Message from '../components/Message'
+import Form from "./components/Form"
+import Filter from "./components/Filter"
+import List from './components/List'
+import Message from './components/Message'
 import {getAll,create,update,deleteEntry} from './services/persons'
 
 const App = () => {
   useEffect(() =>{
     getAll()
       .then(res =>{
-        console.log('USE EFFECT: phonebook = ',res);
+        // console.log('USE EFFECT: phonebook = ',res);
         setPersons(res);
       })
   },[])
@@ -25,15 +25,15 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const duplicate = persons.find( p => p.name === newName)
+    const duplicate = persons.find( p => p.name === newName.trim())
 
     if ( duplicate ) {
       if (window.confirm(`${newName} is alread in the phonebook. Replace old number with the new one?`)) {
-        console.log('in update ',duplicate)
+        // console.log('in update ',duplicate)
         const newEntry = {...duplicate,number: newNumber}
         update(newEntry)
           .then( res => {
-            console.log('number updated ',res)
+            // console.log('number updated ',res)
             setPersons( persons.map( p => p.id !== newEntry.id ? p : newEntry))
             notification(`Number for ${newEntry.name} has been updated to ${newEntry.number}`)
           })
@@ -41,7 +41,7 @@ const App = () => {
     } else {
       create({name: newName, number: newNumber})
         .then(res =>{
-          console.log('res = ',res);
+          // console.log('res = ',res);
           setPersons(persons.concat({id: res.id,name: res.name, number: res.number}))
           notification(`${newName} has been added to the phonebook.`)
         })
