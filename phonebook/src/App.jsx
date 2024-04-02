@@ -12,6 +12,9 @@ const App = () => {
         // console.log('USE EFFECT: phonebook = ',res);
         setPersons(res);
       })
+      .catch( err => {
+        console.log('phonebook currently unavailable')
+      })
   },[])
 
   const [persons, setPersons] = useState([])
