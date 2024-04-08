@@ -28,10 +28,20 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!newName) {
+      alert(`Name can not be empty`)
+      return;
+    }
+
+    if (!newNumber) { 
+      alert(`Number can not be empty`)
+      return;
+    }
+
     const duplicate = persons.find( p => p.name === newName.trim())
 
     if ( duplicate ) {
-      if (window.confirm(`${newName} is alread in the phonebook. Replace old number with the new one?`)) {
+      if (window.confirm(`${newName} is already in the phonebook. Replace old number with the new one?`)) {
         // console.log('in update ',duplicate)
         const newEntry = {...duplicate,number: newNumber}
         update(newEntry)
