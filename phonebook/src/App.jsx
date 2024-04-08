@@ -28,16 +28,6 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!newName) {
-      alert(`Name can not be empty`)
-      return;
-    }
-
-    if (!newNumber) { 
-      alert(`Number can not be empty`)
-      return;
-    }
-
     const duplicate = persons.find( p => p.name === newName.trim())
 
     if ( duplicate ) {
